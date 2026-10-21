@@ -1,0 +1,20 @@
+services:
+  database:
+    image: postgres:16-alpine
+    container_name: nutri_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: nutridb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+    ports:
+      - "5432:5432"
+    volumes:
+      # Salva i dati sul PC per non perderli quando spegni il contenitore
+      - postgres_data:/var/lib/postgresql/data
+      # Esegue automaticamente gli script SQL alla prima creazione del DB
+      - ./database/schema.sql:/docker-entrypoint-initdb.d/1_schema.sql
+      - ./database/data.sql:/docker-entrypoint-initdb.d/2_data.sql
+
+volumes:
+  postgres_data:

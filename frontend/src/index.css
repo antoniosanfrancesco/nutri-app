@@ -1,0 +1,293 @@
+:root {
+  --text: #1f2937;
+  --text-muted: #4b5563;
+  --bg: #dfdcb9;
+  --border: #202e32;
+	--surface: #ffffff;     /*Sfondo per card, modali e tabelle*/
+
+	--primary: #2d5a27;
+	--primary-hover: #22451e;
+  --accent: #b85d33;
+  --accent-bg: rgba(45, 90, 39, 0.08);
+  --sans: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  font-family: var(--sans);
+  color-scheme: light dark;
+  color: var(--text);
+  background-color: var(--bg);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #9ca3af;
+    --text-h: #f3f4f6;
+    --bg: #0f172a;
+    --border: #334155;
+    --code-bg: #1e293b;
+    --accent: #38bdf8;
+  }
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(15px);
+
+	} to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+.page-transition {
+	animation: fadeInUp 0.35s ease-out forwards;
+}
+
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-h);
+  font-weight: 600;
+}
+
+.navbar-custom {
+	background-color: #586c5c;
+	border-bottom: var(--border);
+	border-radius: 0 0 18px 18px;
+	color: white !important;
+}
+
+.btn-custom {
+	background-color: var(--bg);
+	border-color: #85937a;
+	color: #0f172a;
+}
+
+.btn-custom:hover {
+	background-color: #1f2937;
+}
+
+.btn-custom-danger {
+	background-color: #dc3545;
+	border-color: #dc3545;
+	color: #ffffff;
+	transition: all 0.2s ease-in-out;
+}
+
+.btn-custom-danger:hover {
+	background-color: #ffffff;
+	border-color: #dc3545;
+	color: #dc3545;
+}
+
+.custom-nav-links .nav-link {
+  color: white !important; 
+	transition: all 0.3s ease-in-out;
+}
+
+.custom-nav-links .nav-link:hover,
+.custom-nav-links .nav-link.active {
+  color: #ffffff !important;
+	text-shadow: 0 0 8px rgba(255, 255, 255, 0.8),
+							 0 0 20px rgba(13, 110, 253, 0,6);
+
+}
+
+/* ==========================================
+   CORREZIONE GLOBALE BOTTONI CONTRO LO SFONDO --bg
+   ========================================== */
+
+/* I bottoni "light" avranno sempre sfondo bianco puro e bordo definito */
+.btn-light {
+  background-color: #ffffff !important;
+  border: 1px solid #d1d5db !important;
+  color: var(--border) !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-light:hover {
+  background-color: #f8fafc !important;
+  border-color: var(--primary) !important;
+  color: var(--primary) !important;
+}
+
+/* I bottoni "secondary" riprendono l'antracite del brand per un contrasto deciso */
+.btn-secondary {
+  background-color: var(--border) !important;
+  border: 1px solid var(--border) !important;
+  color: #ffffff !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-secondary:hover {
+  background-color: #111827 !important;
+  border-color: #111827 !important;
+  color: #ffffff !important;
+}
+
+/* Outline secondary personalizzati */
+.btn-outline-secondary {
+  border-color: #cbd5e1 !important;
+  color: var(--border) !important;
+  background-color: #ffffff !important;
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--border) !important;
+  border-color: var(--border) !important;
+  color: #ffffff !important;
+}
+
+/* ==========================================
+   PERSONALIZZAZIONE COMPLETA EDITOR DIETE (DietEditor & Figli)
+   ========================================== */
+
+/* 1. Pulsanti dei giorni della settimana (Tab / Bottoni selezione giorno) */
+.diet-editor .nav-pills .nav-link,
+.diet-editor .btn-group .btn,
+.day-selector-btn {
+  border-radius: 50rem !important;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+/* Stato attivo dei giorni o tab */
+.diet-editor .nav-pills .nav-link.active,
+.diet-editor .btn.active {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 6px -1px rgba(45, 90, 39, 0.2);
+}
+
+/* 2. Titoli delle schede pasto (es. Colazione, Pranzo...) e sezioni */
+.meal-card-header, 
+.meal-title,
+h5.meal-heading {
+  color: var(--border) !important;
+  font-weight: 700 !important;
+}
+
+/* 3. Pulsanti azione specifici (Aggiungi alimento, Cerca online, Salva, PDF) */
+/* Pulsante Aggiungi Alimento / Cerca online */
+.btn-add-food,
+.btn-search-online,
+button[class*="add"],
+button[class*="search"] {
+  border-radius: 50rem !important;
+  font-weight: 600;
+}
+
+/* Pulsanti principali di salvataggio o download PDF nell'editor */
+.diet-editor .btn-success,
+.btn-save-diet {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  border-radius: 50rem !important;
+  font-weight: 600;
+  color: #ffffff !important;
+  box-shadow: 0 4px 6px -1px rgba(45, 90, 39, 0.2);
+}
+
+.diet-editor .btn-success:hover,
+.btn-save-diet:hover {
+  background-color: #22451e !important;
+  border-color: #22451e !important;
+}
+
+/* Pulsanti secondari o outline all'interno dell'editor (es. Scarica PDF, Cerca OpenFood) */
+.diet-editor .btn-outline-primary,
+.diet-editor .btn-outline-secondary {
+  border-radius: 50rem !important;
+  border-color: var(--border) !important;
+  color: var(--border) !important;
+  background-color: #ffffff !important;
+  font-weight: 600;
+}
+
+.diet-editor .btn-outline-primary:hover,
+.diet-editor .btn-outline-secondary:hover {
+  background-color: var(--border) !important;
+  border-color: var(--border) !important;
+  color: #ffffff !important;
+}
+
+/* 4. Input e Select di ricerca cibi dentro l'editor resi perfettamente arrotondati */
+.diet-editor .form-control,
+.diet-editor .form-select,
+.diet-editor .input-group {
+  border-radius: 50rem !important;
+}
+
+/* Per evitare bordi squadrati sugli input group di Bootstrap */
+.diet-editor .input-group .form-control:first-child {
+  border-top-left-radius: 50rem !important;
+  border-bottom-left-radius: 50rem !important;
+}
+.diet-editor .input-group .btn:last-child,
+.diet-editor .input-group .input-group-text:last-child {
+  border-top-right-radius: 50rem !important;
+  border-bottom-right-radius: 50rem !important;
+}
+
+/* ==========================================
+   ELIMINAZIONE DEFINITIVA DEL BLU NELL'EDITOR DIETE
+   ========================================== */
+
+/* 1. Giorni della settimana / Tab attive o bottoni di selezione */
+.diet-editor .nav-pills .nav-link.active,
+.diet-editor .nav-tabs .nav-link.active,
+.diet-editor .btn-primary,
+.diet-editor .btn-check:checked + .btn,
+.diet-editor .badge.bg-primary {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #ffffff !important;
+}
+
+/* Hover dei bottoni primari nell'editor */
+.diet-editor .btn-primary:hover {
+  background-color: #22451e !important;
+  border-color: #22451e !important;
+}
+
+/* 2. Titoli delle schede pasto (Colazione, Pranzo, Cena, ecc.) e testi primari */
+.diet-editor .text-primary {
+  color: var(--primary) !important;
+}
+
+.diet-editor .card-header,
+.diet-editor .meal-header,
+.diet-editor h4, 
+.diet-editor h5, 
+.diet-editor h6 {
+  color: var(--border) !important;
+}
+
+/* 3. Eventuali bordi blu di focus sui campi input dentro l'editor */
+.diet-editor .form-control:focus,
+.diet-editor .form-select:focus {
+  border-color: var(--primary) !important;
+  box-shadow: 0 0 0 0.25rem rgba(45, 90, 39, 0.15) !important;
+}
