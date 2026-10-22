@@ -47,26 +47,31 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
-    public CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration configuration = new CorsConfiguration();
-        
-        // Origini consentite (Vite su 5173 e Create React App su 3000)
-        configuration.setAllowedOrigins(List.of("http://localhost:5173", "http://localhost:3000"));
-        
-        // Metodi HTTP ammessi per le API
-        configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
-        
-        // Header ammessi nelle richieste dal client
-        configuration.setAllowedHeaders(List.of("Authorization", "Content-Type", "X-Requested-With"));
-        
-        // Permette l'invio di credenziali / header di autenticazione
-        configuration.setAllowCredentials(true);
+      @Bean
+    	public CorsConfigurationSource corsConfigurationSource() {
+					CorsConfiguration configuration = new CorsConfiguration();
+						
+					// Origini consentite: includi sia il locale che il tuo dominio di produzione su Vercel
+					configuration.setAllowedOrigins(List.of(
+							"http://localhost:5173", 
+							"http://localhost:3000", 
+							"https://nutri-app-five-dun.vercel.app" 
+					));
+						
+					// Metodi HTTP ammessi per le API
+					configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
+						
+					// Header ammessi nelle richieste dal client
+					configuration.setAllowedHeaders(List.of("Authorization", "Content-Type", "X-Requested-With"));
+						
+					// Permette l'invio di credenziali / header di autenticazione
+					configuration.setAllowCredentials(true);
 
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", configuration);
-        return source;
-    }
+					UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+					source.registerCorsConfiguration("/**", configuration);
+					return source;
+    	}
+
 
     @Bean
     public PasswordEncoder passwordEncoder() {
