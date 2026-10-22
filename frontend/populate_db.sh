@@ -1,7 +1,7 @@
 #!/bin/bash
 
-BASE_URL="http://localhost:8080/api"
-TOKEN="eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJtYXJpb3Jvc3NpQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX05VVFJJVElPTklTVCIsImlhdCI6MTc5MjU3MzU1OCwiZXhwIjoxNzkyNjU5OTU4fQ.m50q5SKfL1QJlMnjs9wmd7t6CCQM9cbasDLTF8fzb1MCZpx6_oI6kaGdI79I8qD_"
+BASE_URL="https://nutri-app-ecuw.onrender.com/api"
+TOKEN="eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJtYXJpb3Jvc3NpQGdtYWlsLmNvbSIsInJvbGUiOiJST0xFX05VVFJJVElPTklTVCIsImlhdCI6MTc5MjY4MTQzNywiZXhwIjoxNzkyNzY3ODM3fQ.mHHhsmverUNTe5lfgrpQd3EsBgvU9_hHOHZ8doOgy1llLFlWYw9I6a4_wtWYSwNC"
 
 echo "🚀 Inizio popolamento completo con storico misurazioni (Miglioramenti e Peggioramenti)..."
 
