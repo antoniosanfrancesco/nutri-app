@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-// 1. Istanza di base per chiamare il backend Spring Boot
+// 1. Istanza di base: usa l'URL di Render in produzione e localhost in sviluppo
 const axiosInstance = axios.create({
-  baseURL: 'http://localhost:8080/api',
+  baseURL: import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -27,7 +27,6 @@ axiosInstance.interceptors.response.use(
   (response) => response,
   (error) => {
     if (error.response && error.response.status === 401) {
-      // Se il server risponde 401, pulisce la sessione e reindirizza al Login
       localStorage.removeItem('token');
       localStorage.removeItem('user');
 
